@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="bg-yellow-50">
 <div class="w-4/5 m-auto text-center">
 	<div class="py-15 border-b border-gray-200">
 		<h1 class="text-6xl">
@@ -31,7 +32,7 @@
 			{{$post->description}}
 		</p>
 		<a class=" text-gray-700 italic hover:text-gray-900 pb-1 border-b-2" href="/blog/{{$post->slug}}">
-		See More</a>
+		JSON</a>
 	@if(isset(Auth::user()->id) && Auth::user()->id==$post->user_id)
 	<span class="float-right">
 		<a href="/blog/{{$post->slug}}/edit" class=" text-gray-700 italic hover:text-gray-900 pb-1 border-b-2">
@@ -56,5 +57,6 @@
 @endforeach
 <div>
 	{{$posts->links()}}
+</div>
 </div>
 @endsection

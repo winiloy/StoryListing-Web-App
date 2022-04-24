@@ -72,6 +72,7 @@ public function __construct()
         
        return view('blog.show')
        ->with('post',Post::where('slug',$slug)->first());
+       
 
     }
 
