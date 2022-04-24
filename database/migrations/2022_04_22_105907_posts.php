@@ -18,7 +18,8 @@ class Posts extends Migration
             $table->string('slug');
             $table->string('title');
             $table->string('description');
-            $table->timestamps();
+            $table->timestamps(); //I prefer timestamp but it is not used here.
+            $table->date('time');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
         });

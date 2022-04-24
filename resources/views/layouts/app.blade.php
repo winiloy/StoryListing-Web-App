@@ -25,15 +25,16 @@
                     </a>
                 </div>
                 <nav class="space-x-4 text-gray-300 text-sm sm:text-base">
+                <form class="float-left " action="">
+  <input type="text" class="text-gray-800 h-10 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none " placeholder="Search..." name="search" value="">
+  <button class="align-top no-underline hover:underline" type="submit">Search</i></button>
+</form>
                 
                     @if (Auth::check())
-
 	<a 
 	href="/blog/create" class="no-underline hover:underline">
 		Create New Story
 	</a>
-	
-
 
 @endif
                     @guest

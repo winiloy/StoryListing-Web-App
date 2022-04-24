@@ -20,12 +20,21 @@ public function __construct()
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         
 
-        return view('blog.index')
+        $search = $request['search'] ?? "";
+        if($search!=""){
+            return view('blog.index')
+            ->with('posts',Post::where('title','LIKE',"%$search%")->orWhere('description','LIKE',"%$search%")->paginate(4));
+        }
+        else{
+            return view('blog.index')
         ->with('posts',Post::orderBy('updated_at','DESC')->paginate(4));
+
+        }
+        
     }
 
     /**
@@ -56,6 +65,7 @@ public function __construct()
             'description'=>$request->input('description'),
             'slug'=>SlugService::createSlug(Post::class,'slug',$request->title),
             'user_id'=>auth()->user()->id,
+            'time'=>$request->input('time'),
         ]);
 
         return redirect('/blog')->with('message','Your story has been added!');
@@ -73,7 +83,6 @@ public function __construct()
        return view('blog.show')
        ->with('post',Post::where('slug',$slug)->first());
        
-
     }
 
     /**
@@ -108,6 +117,7 @@ public function __construct()
             'description'=>$request->input('description'),
             'slug'=>SlugService::createSlug(Post::class,'slug',$request->title),
             'user_id'=>auth()->user()->id,
+            'time'=>$request->input('time'),
        ]);
 
        return redirect('/blog')

@@ -6,6 +6,7 @@
 
 		<p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
 			{{json_encode($post)}}
+			
 		</p>
 	
 </span>

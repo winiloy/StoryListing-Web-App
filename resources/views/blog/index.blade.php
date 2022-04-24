@@ -9,6 +9,7 @@
 		</h1>		
 	</div>	
 </div>
+
 @if(session()->has('message'))
 <di class="m-auto grid place-items-center">
 	<p class="w-2/6 mb-4 text-center text-gray-50 bg-green-500 rounded-2xl py-4">
@@ -25,7 +26,7 @@
 		<span class="text-gray-500">
 			By <span class="font-bold italic text-gray-800">
 				{{$post->user->name}}
-			</span>, Created on {{date('jS M Y', strtotime($post->updated_at))}}
+			</span>, Created on {{date('jS M Y', strtotime($post->time))}}
 			
 		</span>
 		<p class="text-xl text-gray-700 pt-8 pb-10 leadin-8 font-light">
@@ -58,5 +59,6 @@
 <div>
 	{{$posts->links()}}
 </div>
-</div>
+
 @endsection
+</div>
